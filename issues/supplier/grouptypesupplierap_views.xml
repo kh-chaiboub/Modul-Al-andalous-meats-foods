@@ -1,0 +1,26 @@
+<odoo>
+
+		<record id="view_tree_witness" model="ir.ui.view">
+		        <field name="name">account.payment.group.tree</field>
+		        <field name="model">account.payment</field>
+		        <field name="inherit_id" ref="account.view_account_supplier_payment_tree" />
+		        <field name="arch" type="xml">
+		            <field name="partner_id" position="after">
+		   				<field name="type_partner_ap"/>
+		   				
+		            </field>
+		        </field>
+    	</record>
+         <record id="ms_account_view_account_payment_search" model="ir.ui.view">
+            <field name="name">account.payment.search1</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_search"/>
+            <field name="arch" type="xml">
+            	<xpath expr="/search/filter[1]" position="after">
+                 		<filter string="Type Customer/Vendor" name="type_partner_ap" domain="[]" context="{'group_by': 'type_partner_ap'}"/>
+                 </xpath>
+            	
+            </field>
+         </record>
+
+</odoo>

@@ -13,12 +13,16 @@ description
     """,
     'category': 'autre',
     'website': 'https://www.alandalous.ma',
-    'depends' : ['base'],
+    'depends' : ['base','account','purchase'],
     
     'data': ['data/data.xml',
             'issues/payment/account_payment_method.xml',
             'issues/payment/account_payment.xml',
             'issues/payment/menu.xml',
+            'issues/supplier/addtypesupplier_views.xml',
+            'issues/supplier/grouptypesupplierap_views.xml',
+            'issues/supplier/grouptypesupplierpo_views.xml',
+            'issues/supplier/grouptypesupplieram_views.xml',
         
     ],
     'demo': [

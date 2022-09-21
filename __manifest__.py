@@ -23,6 +23,7 @@ description
             'issues/supplier/grouptypesupplierap_views.xml',
             'issues/supplier/grouptypesupplierpo_views.xml',
             'issues/supplier/grouptypesupplieram_views.xml',
+            'issues/hr_update/hrupdate_views.xml'
         
     ],
     'demo': [

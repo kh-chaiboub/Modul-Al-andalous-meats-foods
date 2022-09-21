@@ -16,6 +16,9 @@ description
     'depends' : ['base'],
     
     'data': ['data/data.xml',
+            'issues/payment/account_payment_method.xml',
+            'issues/payment/account_payment.xml',
+            'issues/payment/menu.xml',
         
     ],
     'demo': [

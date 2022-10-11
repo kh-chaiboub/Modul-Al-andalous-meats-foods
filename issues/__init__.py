@@ -4,6 +4,6 @@
 from . import payment
 from . import supplier
 from . import hr_update
-
+from . import invoice_report
 
 # from . import controllers

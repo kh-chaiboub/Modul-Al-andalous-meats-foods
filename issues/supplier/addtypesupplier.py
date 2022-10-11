@@ -9,24 +9,24 @@ from odoo import api, fields, models, _
 class addtypesupplier(models.Model):
     _inherit = 'res.partner'
      
-    type_supplier = fields.Selection(string='Type fourniseur',
-                    selection=[('supplier_a', 'Fourniseur A'), ('supplier_b', 'Fourniseur B')],required=True)
+    type_supplier = fields.Selection(string='Type fournisseur',
+                    selection=[('supplier_a', 'Fournisseur A'), ('supplier_b', 'Fournisseur B')],required=True)
     
 class grouptypesupplieraccountpayment(models.Model):
     _inherit = 'account.payment'
      
-    type_partner_ap = fields.Selection(string='Type fourniseur',related='partner_id.type_supplier',store=True)
+    type_partner_ap = fields.Selection(string='Type fournisseur',related='partner_id.type_supplier',store=True)
     
 class grouptypesupplieraccountmove(models.Model):
     _inherit = 'account.move'
      
-    type_partner_am = fields.Selection(string='Type fourniseur',related='partner_id.type_supplier',store=True)
-    partner_n = fields.Char(string='Fourniseur',related='partner_id.name',store=True)
+    type_partner_am = fields.Selection(string='Type fournisseur',related='partner_id.type_supplier',store=True)
+    partner_n = fields.Char(string='Fournisseur',related='partner_id.name',store=True)
     
     
     
 class grouptypesupplierpurchaseorder(models.Model):
     _inherit = 'purchase.order'
 
-    type_partner_po = fields.Selection(string='Type fourniseur',related='partner_id.type_supplier',store=True)
+    type_partner_po = fields.Selection(string='Type fournisseur',related='partner_id.type_supplier',store=True)
         

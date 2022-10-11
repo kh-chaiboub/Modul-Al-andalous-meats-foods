@@ -1,42 +1,39 @@
 # coding: utf-8
 
-from odoo import  fields, models,api
+from odoo import  fields, models, api
 from odoo.exceptions import Warning
 from docutils.nodes import field
 
+
 class AccountPaymentRegister(models.TransientModel):
     _inherit = 'account.payment.register'
-
         
-    ms_number = fields.Char("Numéro",track_visibility='onchange')
+    ms_number = fields.Char("Numéro", track_visibility='onchange')
     payment_method_code = fields.Char(
         related='payment_method_id.code',
         help="Technical field used to adapt the interface to the payment type selected.")
-    
     
     def _create_payments(self):
         payment_ids = super(AccountPaymentRegister, self)._create_payments()
         for payment_id in payment_ids:
             if self.ms_number:
-                payment_id.ms_number=self.ms_number
-                ref=payment_id._ms_get_move_ref('')
+                payment_id.ms_number = self.ms_number
+                ref = payment_id._ms_get_move_ref('')
                 payment_id.move_id.write({'ref':ref})
         return payment_ids
+
         
 class AccountPayment(models.Model):
     _inherit = 'account.payment'
-
         
-    ms_number = fields.Char("Numéro",track_visibility='onchange')
-                
+    ms_number = fields.Char("Numéro", track_visibility='onchange')
 
-
-    def _ms_get_move_ref(self,aml_name):
-        res_str=aml_name
-        if self.ms_number :
-            res_str =res_str + ' ' + self.payment_method_id.code + ': '+ self.ms_number
+    def _ms_get_move_ref(self, aml_name):
+        res_str = aml_name
+        if self.ms_number:
+            res_str = res_str + ' ' + self.payment_method_id.code + ': ' + self.ms_number
         if self.ref:
-            res_str =res_str + ' (' + self.ref +')'
+            res_str = res_str + ' (' + self.ref + ')'
         return res_str
     
     # def _get_liquidity_move_line_vals(self, amount):
@@ -48,12 +45,10 @@ class AccountPayment(models.Model):
     
     def action_post(self):
         for rec in self:
-            res=super(AccountPayment, rec).action_post()
-            ref=self._ms_get_move_ref('')
+            res = super(AccountPayment, rec).action_post()
+            ref = self._ms_get_move_ref('')
             rec.move_id.write({'ref':ref})
         return True
-    
-        
         
 #     def refrech_ms_amount_residual(self):
 #         print('_________refrech_ms_amount_residual__',self)

@@ -1,50 +1,17 @@
 <odoo>
-
-		<!-- <record id="view_tree_witness" model="ir.ui.view">
-		        <field name="name">account.payment.group.tree</field>
-		        <field name="model">account.payment</field>
-		        <field name="inherit_id" ref="account.view_account_supplier_payment_tree" />
-		        <field name="arch" type="xml">
-		            <field name="partner_id" position="after">
-		   				<field name="type_partner_ap"/>
-		            </field>
-		        </field>
-    	</record> -->
-    	
-    <!-- 	<record id="view_group_witness_tree" model="ir.ui.view">
-            <field name="name">account.move.group.tree</field>
-            <field name="model">account.move</field>
-            <field name="inherit_id" ref="account.view_invoice_tree"/>
-            <field name="arch" type="xml">
-                <xpath name="partner_id" position="after">
-                    <field name="type_partner_am"/>
-                </xpath>
-            </field>
-        </record> -->
-     <!--    <record id="ms_account_view_account_payment_filter" model="ir.ui.view">
-            <field name="name">account.move.groupe.select</field>
-            <field name="model">account.move</field>
-             <field name="inherit_id" ref="view_account_invoice_filter"/>
-            <field name="arch" type="xml">
-                <search string="Search Invoice">
-                <xpath expr="/search/filter[1]" position="after">
-                 	<filter string="Type Customer/Vendor" name="type_partner_ap" domain="[]" context="{'group_by': 'type_partner_ap'}"/>
-                 </xpath>
-                    
-               </search>
-            </field>
-        </record> -->
-         <!-- <record id="ms_account_view_account_payment_search" model="ir.ui.view">
-            <field name="name">account.payment.search1</field>
-            <field name="model">account.payment</field>
-            <field name="inherit_id" ref="account.view_account_payment_search"/>
-            <field name="arch" type="xml">
-            	<xpath expr="/search/filter[1]" position="after">
-                       <filter name="open" string="Open" domain="[('date_invoice','&lt;=',((context_today()-datetime.timedelta(days=10)).strftime('%Y-%m-%d'))), ('state', '=', 'open')]" help="Invoices Open"/>
-                 		<filter string="Type Customer/Vendor" name="type_partner_ap" domain="[]" context="{'group_by': 'type_partner_ap'}"/>
-                 </xpath>
-            	
-            </field> 
-         </record>-->
-
+	<record id="ms_account_view_account_move_filter" model="ir.ui.view">
+		<field name="name">account.move.groupe.select.filter</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="account.view_account_invoice_filter" />
+		<field name="arch" type="xml">
+			<xpath expr="//filter[@name='draft']" position="after">
+				<separator />
+				<filter string="Fournisseurs" name="partner_n" />
+				<separator />
+				<filter string="Type Fournisseur A" name="type_partner_am" domain="[('type_partner_am','=', 'supplier_a')]" />
+				<filter string="Type Fournisseur B" name="type_partner_am" domain="[('type_partner_am','=', 'supplier_b')]" />
+				<separator />
+			</xpath>
+		</field>
+	</record>
 </odoo>

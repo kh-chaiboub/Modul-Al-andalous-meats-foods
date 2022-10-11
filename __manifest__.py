@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
-    'name' : 'Al_andalous',
-    'version' : '1.1',
+    'name': 'Al_andalous',
+    'version': '1.1',
     'summary': 'Summary',
     'author': 'Khalid chaiboub Works',
     'sequence': 1,
@@ -13,7 +13,7 @@ description
     """,
     'category': 'autre',
     'website': 'https://www.alandalous.ma',
-    'depends' : ['base','account','purchase'],
+    'depends': ['base', 'account', 'purchase'],
     
     'data': ['data/data.xml',
             'issues/payment/account_payment_method.xml',
@@ -23,7 +23,8 @@ description
             'issues/supplier/grouptypesupplierap_views.xml',
             'issues/supplier/grouptypesupplierpo_views.xml',
             'issues/supplier/grouptypesupplieram_views.xml',
-            'issues/hr_update/hrupdate_views.xml'
+            'issues/hr_update/hrupdate_views.xml',
+            'issues/invoice_report/custom_report_invoice.xml'
         
     ],
     'demo': [
